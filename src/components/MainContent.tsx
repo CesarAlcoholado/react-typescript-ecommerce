@@ -93,9 +93,9 @@ const MainContent = () => {
     
   }
 
-  const filteredProducts = getFilteredProducts()
 
-  console.log(filteredProducts);
+const filteredProducts = getFilteredProducts()
+ 
 
   const totalProducts = 100
   const totalPages = Math.ceil(totalProducts / itemsPerPage)
@@ -152,7 +152,7 @@ const MainContent = () => {
     <div className="mb-5">
       <div className="flex flex-col sm:flex-row justify-between items-center">
         <div className="relative mb-5 mt-5">
-          <button className="border px-4 py-2 rounded-full flex items-center">
+          <button onClick={()=> setDropdownOpen(!dropdownOpen)} className="border px-4 py-2 rounded-full flex items-center">
             <Tally3 className="mr-2"/>
             {filter === 'all' ? 'Filter' : filter.charAt(0).toLowerCase() + filter.slice(1)}
           </button>
@@ -167,7 +167,7 @@ const MainContent = () => {
       </div>
 
       <div className="grid grid-cols-4 sm:grid-cols-3 md:grid-cols-4 gap-5">
-        {products.map((product, index)=> <BookCard key={index} id={product.id} title={product.title} image={product.thumbnail} price={product.price}/>)}
+        {filteredProducts.map((product, index)=> <BookCard key={index} id={product.id.toString()} title={product.title} image={product.thumbnail} price={product.price}/>)}
       </div>
 
       <div className="flex flex-col sm:flex-row justify-between items-center mt-5">
